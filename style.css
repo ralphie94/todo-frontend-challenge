@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: hsl(235, 21%, 11%);
+}
+
+.top-img {
+    width: 100%;
+    height: 225px;
+    background-size: cover;
+    background-image: url("./images/bg-mobile-dark.jpg");
+}
