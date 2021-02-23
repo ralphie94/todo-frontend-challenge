@@ -14,3 +14,27 @@ body {
     background-size: cover;
     background-image: url("./images/bg-mobile-dark.jpg");
 }
+
+main {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    padding: 25px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    letter-spacing: 10px;
+    padding-top: 10px;
+}
+
+.tgl-btn {
+    background: url("./images/icon-sun.svg");
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}
