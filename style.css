@@ -6,13 +6,29 @@
 
 body {
     background: hsl(235, 21%, 11%);
+    --bg: hsl(235, 21%, 11%);
+    --fg: hsl(234, 39%, 85%);
+    --top-img: url("./images/bg-mobile-dark.jpg");
+    --tgl-btn: url("./images/icon-sun.svg");
+    --bg-todo: hsl(235, 24%, 19%);
+
+    background: var(--bg);
+    color: var(--fg);
 }
+
+.light {
+    --top-img: url("./images/bg-mobile-light.jpg");
+    --tgl-btn: url("./images/icon-moon.svg");
+    --bg: hsl(236, 33%, 92%);
+    --bg-todo: hsl(0, 0%, 98%);
+    --fg: hsl(237, 14%, 26%);
+  }
 
 .top-img {
     width: 100%;
     height: 225px;
     background-size: cover;
-    background-image: url("./images/bg-mobile-dark.jpg");
+    background-image: var(--top-img);
 }
 
 main {
@@ -33,8 +49,40 @@ main {
 }
 
 .tgl-btn {
-    background: url("./images/icon-sun.svg");
+    background: var(--tgl-btn);
     width: 30px;
     height: 30px;
     background-size: cover;
+}
+
+.type-todo {
+    margin-top: 24px;
+    width: 100%;
+    background: var(--bg);
+    padding: 10px;
+    height: 55px;
+    display: grid;
+    grid-template-columns: 10% auto;
+    align-items: center;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid hsl(237, 14%, 26%);
+}
+
+#todo-input {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border: none;
+    color: var(--fg);
+    caret-color: hsl(220, 98%, 61%);
+}
+
+#todo-input:focus {
+    outline: none;
 }
