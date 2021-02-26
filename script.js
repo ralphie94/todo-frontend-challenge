@@ -1,5 +1,6 @@
 const todoInput = document.querySelector("#todo-input");
 const todosContainer = document.querySelector(".todos");
+const completedCount = document.querySelector(".completedCount");
 
 const todos = [];
 
@@ -8,6 +9,7 @@ todoInput.addEventListener("keyup", function (e) {
         todos.push({ value: e.target.value, checked: false });
         newTodo(e.target.value);
         todoInput.value = "";
+        countCompleted();
     }
 });
 
@@ -31,10 +33,10 @@ function newTodo(value) {
             todoText.style.textDecoration = "none";
             todoCheckBoxLabel.classList.remove("active");
             obj.checked = false;
-            console.log(todos);
+            countCompleted();
         } else {
             obj.checked = true;
-            console.log(todos);
+            countCompleted();
             todoCheckBox.checked = true;
             todoText.style.textDecoration = "line-through";
             todoCheckBoxLabel.classList.add("active");
@@ -44,7 +46,7 @@ function newTodo(value) {
     todoCross.textContent = "X";
     todoCross.addEventListener("click", function (e) {
         e.target.parentElement.remove();
-        todos = todos.filter((t) => t != obj);
+        todos = todos.filter((t) => t !== obj);
     });
 
     todo.classList.add("todo");
@@ -57,6 +59,12 @@ function newTodo(value) {
     todo.appendChild(todoCross);
 
     todosContainer.appendChild(todo);
+}
+
+function countCompleted() {
+    completedCount.textContent = `${
+        todos.filter((t) => t.checked === false).length
+    } items left`;
 }
 
 function changeTheme() {
