@@ -5,7 +5,7 @@ const todos = [];
 
 todoInput.addEventListener("keyup", function (e) {
     if (e.key === "Enter" || e.keyCode === 13) {
-        todos.push(e.target.value);
+        todos.push({ value: e.target.value, checked: false });
         newTodo(e.target.value);
         todoInput.value = "";
     }
@@ -18,16 +18,23 @@ function newTodo(value) {
     const todoCheckBoxLabel = document.createElement("label");
     const todoCross = document.createElement("span");
 
+    let obj = todos.find((t) => t.value === value);
+
     todoText.textContent = value;
     todoCheckBox.type = "checkbox";
     todoCheckBox.name = "checkbox";
     todoCheckBoxLabel.htmlFor = "checkbox";
     todoCheckBoxLabel.addEventListener("click", function (e) {
+
         if (todoCheckBox.checked) {
             todoCheckBox.checked = false;
             todoText.style.textDecoration = "none";
             todoCheckBoxLabel.classList.remove("active");
+            obj.checked = false;
+            console.log(todos);
         } else {
+            obj.checked = true;
+            console.log(todos);
             todoCheckBox.checked = true;
             todoText.style.textDecoration = "line-through";
             todoCheckBoxLabel.classList.add("active");
@@ -37,6 +44,7 @@ function newTodo(value) {
     todoCross.textContent = "X";
     todoCross.addEventListener("click", function (e) {
         e.target.parentElement.remove();
+        todos = todos.filter((t) => t != obj);
     });
 
     todo.classList.add("todo");
